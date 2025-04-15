@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Food Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Login Form -->
+        <div class="card" id="mainLoginCard">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50/8D1B3D/FFFFFF?text=Food+Delivery" alt="Food Delivery Logo">
+                <h1>Welcome Back</h1>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                    <div class="error-message"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="Enter your password">
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-message"></div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <div class="social-login">
+                <button id="googleLogin" class="social-btn google">
+                    <i class="fab fa-google"></i> Login with Google
+                </button>
+                <button id="phoneLogin" class="social-btn phone">
+                    <i class="fas fa-phone"></i> Login with Phone
+                </button>
+            </div>
+            
+            <div class="footer">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </div>
+        </div>
+        
+        <!-- Phone Login Form (Hidden by default) -->
+        <div class="card" id="phoneLoginForm" style="display: none;">
+            <div class="logo">
+                <h1>Phone Login</h1>
+            </div>
+            
+            <form id="phoneForm">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+1 (555) 123-4567">
+                    <div class="error-message"></div>
+                </div>
+                
+                <button type="submit" id="phoneLoginBtn" class="btn">
+                    <i class="fas fa-paper-plane"></i> Send Verification Code
+                </button>
+            </form>
+            
+            <div class="footer">
+                <a href="#" id="backToLogin">Back to Login</a>
+            </div>
+        </div>
+        
+        <!-- Verification Form (Hidden by default) -->
+        <div class="card" id="verificationForm" style="display: none;">
+            <div class="logo">
+                <h1>Verify Your Phone</h1>
+            </div>
+            
+            <form id="verificationCodeForm">
+                <div class="form-group">
+                    <label for="verificationCode">Verification Code</label>
+                    <input type="text" id="verificationCode" name="verificationCode" placeholder="Enter 6-digit code">
+                    <div class="error-message"></div>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-check"></i> Verify
+                </button>
+            </form>
+            
+            <div class="footer">
+                <a href="#" id="resendCode">Resend Code</a> | 
+                <a href="#" id="backToPhone">Change Phone Number</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <!-- Initialize Firebase -->
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "your-project-id.firebaseapp.com",
+            projectId: "your-project-id",
+            storageBucket: "your-project-id.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <!-- Custom JS -->
+    <script src="login.js"></script>
+</body>
+</html> 
